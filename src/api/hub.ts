@@ -36,7 +36,7 @@ export const getCredential = (token: string, target_app_id: string) =>
   post('/user/credential', { target_app_id }, token) as Promise<{ credential: string }>
 
 export const getNodes = (token: string) =>
-  get('/nodes', token) as Promise<AppNode[]>
+  get('/nodes', token).then((d: { nodes: AppNode[] }) => d.nodes)
 
 export const getNode = (token: string, app_id: string) =>
   get(`/nodes/${app_id}`, token) as Promise<AppNode>
