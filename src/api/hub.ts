@@ -8,7 +8,7 @@ export interface AppNode {
   admin_uid?: string   // Hub Server 返回，用于 NodeAdminPage 的管理员身份校验
 }
 
-const base = () => import.meta.env.VITE_HUB_API as string
+const base = () => import.meta.env.VITE_HUB_API || "/hub-api"
 
 async function post(path: string, body: unknown, token?: string) {
   const headers: Record<string, string> = { 'Content-Type': 'application/json' }
